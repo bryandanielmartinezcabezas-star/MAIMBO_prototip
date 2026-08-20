@@ -1,0 +1,74 @@
+﻿[
+  {
+    "id": 1,
+    "name": "Nike Air Max - White",
+    "category": "Zapatillas",
+    "price": 450,
+    "stock": 12,
+    "image": "https://images.pexels.com/photos/3407881/pexels-photo-3407881.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "NIKE-001"
+  },
+  {
+    "id": 2,
+    "name": "Black Hoodie - Urban Fit",
+    "category": "Hoodies",
+    "price": 280,
+    "stock": 8,
+    "image": "https://images.pexels.com/photos/3407881/pexels-photo-3407881.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "HOOD-001"
+  },
+  {
+    "id": 3,
+    "name": "Adidas Ultraboost - Black",
+    "category": "Zapatillas",
+    "price": 520,
+    "stock": 5,
+    "image": "https://images.pexels.com/photos/3407881/pexels-photo-3407881.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "ADAS-001"
+  },
+  {
+    "id": 4,
+    "name": "Red Oversized T-Shirt",
+    "category": "Camisetas",
+    "price": 120,
+    "stock": 25,
+    "image": "https://images.pexels.com/photos/2769274/pexels-photo-2769274.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "TSHIRT-001"
+  },
+  {
+    "id": 5,
+    "name": "Cargo Pants - Khaki",
+    "category": "Pantalones",
+    "price": 250,
+    "stock": 10,
+    "image": "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "CARGO-001"
+  },
+  {
+    "id": 6,
+    "name": "Puma RS-X - White/Red",
+    "category": "Zapatillas",
+    "price": 380,
+    "stock": 14,
+    "image": "https://images.pexels.com/photos/3407881/pexels-photo-3407881.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "PUMA-001"
+  },
+  {
+    "id": 7,
+    "name": "Denim Jacket - Classic",
+    "category": "Chaquetas",
+    "price": 420,
+    "stock": 6,
+    "image": "https://images.pexels.com/photos/2220294/pexels-photo-2220294.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "DENIM-001"
+  },
+  {
+    "id": 8,
+    "name": "Vans Old Skool - Black",
+    "category": "Zapatillas",
+    "price": 320,
+    "stock": 18,
+    "image": "https://images.pexels.com/photos/3407881/pexels-photo-3407881.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "sku": "VANS-001"
+  }
+]
