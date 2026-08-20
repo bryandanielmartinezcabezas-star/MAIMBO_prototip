@@ -1,219 +1,114 @@
-# MAINBO - Sistema POS + Inventario
+# MAINBO — Sistema de tienda
 
-Dos prototipos de interfaces distintivas para la tienda de ropa **MAINBO MODA** (La Paz, Bolivia). Ambos incluyen sistema de inventario, carrito de compra, y dashboard de ventas.
+Cuatro prototipos de un mismo sistema para **MAINBO MODA** (Zona Mercado Campesino, Sucre).
+Los cuatro hacen exactamente lo mismo y se ven completamente distinto: la idea es que
+Guido y su esposa elijan la piel que sienten suya, no que elijan funciones.
 
----
-
-## 🎯 PROTOTIPOS
-
-### **Prototipo 1: Brutalist Streetwear** 🔥
-- **Aesthetic**: Bold typography, black/white/red palette, asymmetric layout
-- **Tipografía**: Courier Prime (headings) + Urbanist (body)
-- **Colores**: #000 (black), #FFF (white), #FF4444 (red energy)
-- **Vibe**: Urban, direct, attitude streetwear
-- **Diferenciador**: Grid-breaking elements, punchy animations, raw minimalism
-
-**Ubicación**: `/prototipo1`
-
-### **Prototipo 2: Luxury Minimal** ✨
-- **Aesthetic**: Elegant typography, white/gold/gray palette, symmetric layout
-- **Tipografía**: Playfair Display (headings) + Lato (body)
-- **Colores**: #FFF (white), #D4AF37 (gold), #2C2C2C (dark gray)
-- **Vibe**: Sophisticated, premium, breathing room
-- **Diferenciador**: Refined shadows, generous spacing, luxury accessible
-
-**Ubicación**: `/prototipo2`
+Cada uno trae **Catálogo**, **Inventario** y **Gestión de ventas**, todos en tonos oscuros.
 
 ---
 
-## 📦 CARACTERÍSTICAS
+## Los cuatro
 
-Ambos prototipos incluyen:
-
-✅ **Inventario**
-- Búsqueda por nombre/SKU
-- Filtrado por categoría
-- Visualización de stock
-- Grid responsivo
-
-✅ **Carrito de Compra**
-- Resumen de totales
-- Cálculo de impuestos
-- Interfaz limpia
-
-✅ **Dashboard**
-- Estadísticas de ventas
-- Gráficas básicas
-- Transacciones recientes
-
-✅ **Responsive Design**
-- Funciona en laptop y celular
-- Animaciones smooth
-- Reusable components
+| Carpeta | Nombre | Cómo se siente | Puerto |
+|---|---|---|---|
+| `prototipo1` | **NEÓN** | Negro y verde eléctrico sacado de su logo cromado. Tipografía angular. El más "drip". | 5173 |
+| `prototipo2` | **NOIR** | Editorial oscuro: serif grande, mucho aire, un solo acento cereza. Se siente marca. | 5174 |
+| `prototipo3` | **BRUTAL** | Negro puro, rojo, monoespaciada, cero esquinas redondeadas. Crudo y directo. | 5175 |
+| `prototipo4` | **OPERATIVO** | Pizarra y ámbar, denso, más información por pantalla. Para trabajar todo el día. | 5176 |
 
 ---
 
-## 🚀 INSTALACIÓN Y USO
-
-### **Prototipo 1 (Brutalist)**
+## Cómo levantarlos
 
 ```bash
-cd prototipo1
-
-# Instalar dependencias
+cd prototipo1     # o prototipo2 / prototipo3 / prototipo4
 npm install
-
-# Ejecutar en desarrollo
 npm run dev
-# Abre http://localhost:5173
-
-# Build para producción
-npm run build
 ```
 
-### **Prototipo 2 (Luxury)**
+Cada uno abre en su propio puerto, así que se pueden tener los cuatro corriendo
+a la vez y saltar entre pestañas para comparar.
 
-```bash
-cd prototipo2
+---
 
-# Instalar dependencias
-npm install
+## Qué hace el sistema
 
-# Ejecutar en desarrollo
-npm run dev
-# Abre http://localhost:5174
+**Catálogo** — 47 modelos con foto, marca, categoría, precio en bolivianos y stock
+por talla. Buscador por nombre, marca o código; filtros por categoría; orden por
+precio o nombre. Las tallas agotadas se muestran tachadas en vez de esconderse,
+para poder responder al toque "¿hay en 42?".
 
-# Build para producción
-npm run build
+**Inventario** — la misma mercadería vista desde el mostrador: cuántas unidades
+hay, cuánto costó, cuánto vale a precio de venta y cuánto es el margen. Alta,
+edición y baja de productos, stock talla por talla, y un panel de **reposición
+sugerida** que junta lo agotado y lo que está por acabarse.
+
+**Gestión de ventas** — ingresos, ganancia, ticket promedio y prendas vendidas,
+con rango de hoy / 7 días / todo. Gráfico de los últimos siete días, ranking de
+más vendidos, reparto por forma de pago e historial completo de boletas.
+
+**Ticket y cobro** — el ticket vive al costado del catálogo, como una caja de
+verdad: se agrega, se ajusta cantidad, se aplica descuento y se cobra. Al cobrar
+se descuenta el stock solo y la venta aparece en el historial.
+
+**Boleta en PDF** — formato rollo de 80 mm con los datos reales del negocio,
+número correlativo, detalle con talla y precio unitario, y el IVA desglosado.
+Se puede descargar o mandar directo a imprimir.
+
+---
+
+## Detalles que importan
+
+- **Precios en bolivianos con IVA incluido.** El 13% se desglosa *hacia adentro*
+  del total (`total × 13/113`), que es como funciona una boleta boliviana — no se
+  suma encima del precio de vitrina.
+- **Funciona sin internet.** Las 47 fotos están dentro del proyecto. En el puesto,
+  con señal mala, sigue andando igual.
+- **Los datos aguantan el refresco.** Todo se guarda en el navegador; se puede
+  cerrar y volver a abrir sin perder nada.
+- **La demo siempre está viva.** Los datos de ejemplo se regeneran solos si son de
+  un día anterior, así el panel nunca aparece en cero. El botón *Reiniciar demo*
+  vuelve todo al estado inicial.
+- **Anda en celular.** En pantalla chica el ticket pasa a ser un cajón y la
+  navegación baja al pulgar.
+
+---
+
+## Cómo está armado por dentro
+
+Los cuatro prototipos comparten el mismo núcleo. Lo único que cambia entre ellos
+son dos archivos: `src/styles/theme.css` y `src/config/theme.ts`.
+
+```
+src/
+├── domain/       tipos y reglas de dinero (IVA, formato Bs)
+├── services/     lógica pura, sin React: inventario, carrito, boleta, análisis
+├── store/        estado de React que conecta esos servicios con la pantalla
+├── components/
+│   ├── ui/       piezas reutilizables: Button, Modal, Field, Badge, StatTile…
+│   └── features/ las tres vistas más el ticket
+└── styles/
+    ├── base.css  estructura y layout, compartido por los cuatro
+    └── theme.css color, tipografía y textura ← lo único propio de cada piel
 ```
 
----
+Los servicios no saben que existe React y las vistas no saben cómo se guardan los
+datos. Por eso cambiar `localStorage` por un servidor de verdad, más adelante, es
+tocar un solo archivo.
 
-## 🏗️ ARQUITECTURA
-
-### SOLID Principles Aplicados
-
-- **Single Responsibility**: Cada componente tiene una responsabilidad clara
-- **Open/Closed**: Componentes extensibles sin modificar código existente
-- **Liskov Substitution**: Props interfaces consistentes
-- **Interface Segregation**: Componentes reciben solo props que usan
-- **Dependency Inversion**: Datos mockeados (fácil cambiar a API)
-
-### Componentes Reutilizables
-
-```
-Header          → Navegación, branding
-Inventory       → Listado de productos, filtros
-Cart            → Resumen de compra
-Dashboard       → Estadísticas, análisis
-```
-
-### State Management
-
-- React Hooks (useState, useEffect)
-- Local state para simplicidad
-- Fácil migrar a Context API o Redux si escala
+**Stack:** React 18 · TypeScript · Vite · jsPDF · CSS a mano.
 
 ---
 
-## 🎨 PALETAS DE COLOR
+## Lo que sigue, si les gusta
 
-### Prototipo 1 (Brutalist)
-```css
---color-black: #000000
---color-white: #FFFFFF
---color-red: #FF4444
---color-dark-gray: #1a1a1a
-```
-
-### Prototipo 2 (Luxury)
-```css
---color-white: #FFFFFF
---color-light-gray: #F8F8F8
---color-dark-gray: #2C2C2C
---color-gold: #D4AF37
-```
+- Servidor propio para que el inventario se comparta entre la tienda y el celular
+- Pagos con QR enlazados al banco
+- Facturación fiscal con el SIN
+- Catálogo público para vender en línea con envíos a toda Bolivia
+- Cuentas separadas para cada persona que atiende
 
 ---
 
-## 📊 DATASET
-
-Productos mockeados en cada componente (6 items de ejemplo):
-- Nike Air Max - Zapatillas
-- Black Hoodie - Urban Fit
-- Adidas Ultraboost
-- Red Oversized T-Shirt
-- Cargo Pants
-- Puma RS-X
-
-**Ruta de datos**: `/data/products.json`
-
----
-
-## 🔧 TECNOLOGÍA
-
-- **React 18** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool (ultra-fast)
-- **CSS3** - Animations, Grid, Flexbox
-- **Google Fonts** - Typography
-
----
-
-## 📱 RESPONSIVE
-
-Ambos prototipos son **100% responsive**:
-- Desktop: Full layout, all features
-- Tablet: Adapted grid, optimized spacing
-- Mobile: Single column, touch-friendly
-
----
-
-## ✨ CARACTERÍSTICAS ESPECIALES
-
-### Prototipo 1 (Brutalist)
-- Grid background pattern
-- Scroll animations (stagger)
-- Hover effects con scaling
-- Punchy transitions (0.15s-0.3s)
-
-### Prototipo 2 (Luxury)
-- Subtle shadows y depth
-- Smooth transitions (0.4s-0.6s)
-- Breathing whitespace
-- Gradient bars en dashboard
-
----
-
-## 🚢 PRÓXIMAS FASES
-
-- [ ] Integración de API real
-- [ ] Sistema de pagos (Stripe/PayPal)
-- [ ] Autenticación de usuarios
-- [ ] Base de datos (Firebase/PostgreSQL)
-- [ ] Generación de boletas/PDF
-- [ ] Historial de transacciones
-- [ ] Gestión de inventario avanzada
-- [ ] Dashboard con gráficas reales
-
----
-
-## 📝 NOTAS
-
-- Ambos prototipos comparten la misma estructura (fácil mantener)
-- CSS variables para theming consistente
-- Componentes son plug-and-play
-- Listo para agregar carrito global con Context/Redux
-- Imágenes son de Pexels (placeholder)
-
----
-
-## 👨‍💻 AUTOR
-
-Desarrollado como prototipo MVP para MAINBO MODA
-- Bryan Daniel Martínez Cabezas
-- La Paz, Bolivia - Agosto 2026
-
----
-
-**¡Listo para presentar a los clientes! 🎉**
+Sucre, Bolivia · agosto 2026

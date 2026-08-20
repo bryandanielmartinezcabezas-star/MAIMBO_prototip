@@ -1,0 +1,131 @@
+/* ============================================================================
+   NOIR — the minimal wordmark rendered dark. Editorial calm: bone-white type on
+   near-black, one cherry accent, serif headlines and a lot of air.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0a0a0a;
+  --bg-2: #111010;
+  --bg-3: #1a1817;
+  --card-bg: #111010;
+
+  /* Warm bone rather than pure white — paper, not screen. */
+  --ink: #f4efe7;
+  --ink-2: #a8a199;
+  --ink-3: #736c65;
+  --ink-4: #4d4741;
+
+  --line: #211f1d;
+  --line-strong: #322e2b;
+
+  --accent: #e0384a;
+  --accent-ink: #fff;
+  --accent-soft: rgba(224, 56, 74, .1);
+
+  --ok: #5ec07a;
+  --warn: #d9a441;
+  --warn-soft: rgba(217, 164, 65, .07);
+  --danger: #e0384a;
+  --danger-soft: rgba(224, 56, 74, .1);
+
+  --bar: #2b2724;
+  --scrim: rgba(0, 0, 0, .6);
+  --scrim-heavy: rgba(0, 0, 0, .8);
+  --plate: #f4efe7;
+
+  --shadow: 0 24px 70px rgba(0, 0, 0, .75);
+  --glow: 0 14px 34px rgba(0, 0, 0, .5);
+
+  /* Barely-there corners; the calm comes from spacing, not rounding. */
+  --radius: 2px;
+  --radius-sm: 2px;
+  --radius-pill: 99px;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --track: .02em;
+  --track-wide: .18em;
+
+  --title-size: clamp(30px, 4vw, 52px);
+  --title-weight: 600;
+  --title-track: -.015em;
+  --title-transform: none;
+  --nav-transform: none;
+  --btn-transform: uppercase;
+
+  --stat-size: 34px;
+  --total-size: 19px;
+
+  /* Fewer, larger cards and wide gutters — a lookbook, not a grid of stock. */
+  --card-min: 258px;
+  --ticket-w: 388px;
+  --logo-w: 62px;
+  --pad: 16px;
+  --pad-lg: 28px;
+  --gap: 22px;
+  --gap-lg: 40px;
+
+  --ease: cubic-bezier(.33, 1, .68, 1);
+}
+
+/* The wordmark is white-on-black already, so it needs no plate or border. */
+.brand__logo {
+  mix-blend-mode: screen;
+}
+
+/* Editorial headings: a hairline rule under the title instead of a heavy bar. */
+.view__head {
+  padding-bottom: var(--pad);
+  border-bottom: 1px solid var(--line);
+  align-items: flex-end;
+}
+
+.view__title {
+  font-style: normal;
+}
+
+/* Section headings pick up the serif too, in small caps. */
+.panel__head h2 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: var(--track);
+}
+
+/* Cards float on the ground rather than sitting in boxes. */
+.pcard {
+  background: transparent;
+  border-color: transparent;
+}
+
+.pcard:hover {
+  border-color: transparent;
+  transform: translateY(-5px);
+}
+
+.pcard__body {
+  padding: 14px 2px 4px;
+}
+
+/* One restrained accent: the price, and nothing else competing with it. */
+.pcard__brand {
+  color: var(--ink-3);
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.pcard__amount {
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+
+.chipbtn {
+  border-radius: 99px;
+}

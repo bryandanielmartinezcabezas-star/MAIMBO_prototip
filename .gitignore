@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.playwright-mcp/
+*.local
+
+# Screenshots taken while checking the prototypes
+*.png
+!images/*.png

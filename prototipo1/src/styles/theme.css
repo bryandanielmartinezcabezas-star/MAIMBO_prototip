@@ -1,0 +1,118 @@
+/* ============================================================================
+   NEÓN — built from the shop's own chrome-and-green logo.
+   Near-black ground, electric green accent, angular technical type.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  color-scheme: dark;
+
+  /* surfaces */
+  --bg: #060807;
+  --bg-2: #0c0f0e;
+  --bg-3: #141917;
+  --card-bg: #0c0f0e;
+
+  /* text */
+  --ink: #f0f5f2;
+  --ink-2: #a8b5ae;
+  --ink-3: #6f7d76;
+  --ink-4: #4a544f;
+
+  /* structure */
+  --line: #1c2320;
+  --line-strong: #2b3531;
+
+  /* the green lifted straight off the logo */
+  --accent: #4aff64;
+  --accent-ink: #04140a;
+  --accent-soft: rgba(74, 255, 100, .1);
+
+  /* status */
+  --ok: #4aff64;
+  --warn: #ffc247;
+  --warn-soft: rgba(255, 194, 71, .07);
+  --danger: #ff4d5e;
+  --danger-soft: rgba(255, 77, 94, .1);
+
+  --bar: #24302b;
+  --scrim: rgba(0, 0, 0, .62);
+  --scrim-heavy: rgba(0, 0, 0, .78);
+
+  /* Product shots are cut-outs on white; the plate matches them so the photo
+     edge disappears instead of showing a white box inside a dark card. */
+  --plate: #eef1ef;
+
+  --shadow: 0 20px 60px rgba(0, 0, 0, .7);
+  --glow: 0 0 22px rgba(74, 255, 100, .22);
+
+  /* shape — sharp, technical */
+  --radius: 4px;
+  --radius-sm: 3px;
+  --radius-pill: 3px;
+
+  /* type */
+  --font-display: 'Chakra Petch', 'Arial Narrow', sans-serif;
+  --font-body: 'Barlow', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --track: .04em;
+  --track-wide: .14em;
+
+  --title-size: clamp(26px, 3.4vw, 40px);
+  --title-weight: 700;
+  --title-track: .01em;
+  --title-transform: uppercase;
+  --nav-transform: uppercase;
+  --btn-transform: uppercase;
+
+  --stat-size: 30px;
+  --total-size: 17px;
+
+  /* metrics */
+  --card-min: 210px;
+  --ticket-w: 372px;
+  --logo-w: 74px;
+  --pad: 14px;
+  --pad-lg: 20px;
+  --gap: 16px;
+  --gap-lg: 26px;
+
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* A faint technical grid, so the ground reads as a surface rather than a void. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(74, 255, 100, .028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 255, 100, .028) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* The logo carries its own black plate, so it sits flush on the dark ground. */
+.brand__logo {
+  border: 1px solid var(--line-strong);
+  filter: saturate(1.15);
+}
+
+/* Neon only earns its glow on the things that matter: the accent surfaces. */
+.navbtn--on,
+.chipbtn--on,
+.size--on {
+  box-shadow: 0 0 14px rgba(74, 255, 100, .28);
+}
+
+.view__title {
+  text-shadow: 0 0 26px rgba(74, 255, 100, .16);
+}

@@ -1,0 +1,3 @@
+/* Theme first so its custom properties exist before the structure uses them. */
+@import './theme.css';
+@import './base.css';

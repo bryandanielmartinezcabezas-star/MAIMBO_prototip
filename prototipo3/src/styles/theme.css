@@ -1,0 +1,146 @@
+/* ============================================================================
+   BRUTAL — pure black, one red, monospace throughout. Nothing rounded, nothing
+   soft: every edge is a right angle and every label is shouted.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+
+  --bg: #000000;
+  --bg-2: #080808;
+  --bg-3: #131313;
+  --card-bg: #080808;
+
+  --ink: #ffffff;
+  --ink-2: #b9b9b9;
+  --ink-3: #7d7d7d;
+  --ink-4: #525252;
+
+  --line: #1f1f1f;
+  --line-strong: #333333;
+
+  --accent: #ff2d20;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(255, 45, 32, .12);
+
+  --ok: #26e07f;
+  --warn: #ffb020;
+  --warn-soft: rgba(255, 176, 32, .08);
+  --danger: #ff2d20;
+  --danger-soft: rgba(255, 45, 32, .12);
+
+  --bar: #262626;
+  --scrim: rgba(0, 0, 0, .7);
+  --scrim-heavy: rgba(0, 0, 0, .85);
+  --plate: #ffffff;
+
+  /* Hard offset shadow instead of a blur — printed, not lit. */
+  --shadow: 10px 10px 0 rgba(255, 45, 32, .18);
+  --glow: 5px 5px 0 var(--accent);
+
+  --radius: 0;
+  --radius-sm: 0;
+  --radius-pill: 0;
+
+  --font-display: 'Space Mono', ui-monospace, monospace;
+  --font-body: 'Barlow', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  --track: .06em;
+  --track-wide: .2em;
+
+  --title-size: clamp(28px, 3.6vw, 44px);
+  --title-weight: 700;
+  --title-track: -.02em;
+  --title-transform: uppercase;
+  --nav-transform: uppercase;
+  --btn-transform: uppercase;
+
+  --stat-size: 32px;
+  --total-size: 18px;
+
+  --card-min: 206px;
+  --ticket-w: 366px;
+  --logo-w: 70px;
+  --pad: 14px;
+  --pad-lg: 20px;
+  --gap: 14px;
+  --gap-lg: 26px;
+
+  /* No easing curve — motion snaps rather than glides. */
+  --ease: steps(1, end);
+}
+
+/* Diagonal hatch on the ground: raw poster stock. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, .022) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+}
+
+.brand__logo {
+  border: 2px solid var(--ink);
+}
+
+/* Structure is drawn in heavy strokes, never in soft fills. */
+.pcard,
+.tile,
+.panel,
+.tablewrap,
+.modal__panel,
+.alerts {
+  border-width: 2px;
+}
+
+.pcard:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 0 var(--accent);
+}
+
+.tile--emphasis {
+  border-width: 2px;
+}
+
+.btn {
+  border-width: 2px;
+  border-color: currentColor;
+}
+
+.btn--primary,
+.btn:not(.btn--ghost):not(.btn--quiet):not(.btn--danger) {
+  border-color: var(--accent);
+}
+
+.btn:hover:not(:disabled) {
+  box-shadow: 4px 4px 0 rgba(255, 255, 255, .22);
+}
+
+.navbtn--on {
+  box-shadow: 4px 4px 0 rgba(255, 255, 255, .2);
+}
+
+/* Titles carry a slab of accent beneath them. */
+.view__title {
+  border-bottom: 6px solid var(--accent);
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+.field__input:focus,
+.searchbox:focus-within {
+  box-shadow: 3px 3px 0 var(--accent);
+}

@@ -1,0 +1,133 @@
+/* ============================================================================
+   OPERATIVO — the one built to be stared at all day. Cool slate ground, amber
+   accent, tight spacing and more rows per screen than the others.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: dark;
+
+  /* Slightly blue-shifted dark: easier on the eyes over a long shift. */
+  --bg: #0d1117;
+  --bg-2: #131a23;
+  --bg-3: #1b2430;
+  --card-bg: #131a23;
+
+  --ink: #e7edf5;
+  --ink-2: #9aa8bb;
+  --ink-3: #67768c;
+  --ink-4: #495667;
+
+  --line: #212b38;
+  --line-strong: #303d4e;
+
+  --accent: #ff9f0a;
+  --accent-ink: #17120a;
+  --accent-soft: rgba(255, 159, 10, .1);
+
+  --ok: #35d07f;
+  --warn: #ffc94d;
+  --warn-soft: rgba(255, 201, 77, .07);
+  --danger: #ff5f57;
+  --danger-soft: rgba(255, 95, 87, .1);
+
+  --bar: #253141;
+  --scrim: rgba(6, 10, 15, .68);
+  --scrim-heavy: rgba(6, 10, 15, .82);
+  --plate: #eef2f7;
+
+  --shadow: 0 18px 48px rgba(0, 0, 0, .6);
+  --glow: 0 0 0 1px rgba(255, 159, 10, .35);
+
+  --radius: 7px;
+  --radius-sm: 5px;
+  --radius-pill: 99px;
+
+  --font-display: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --track: .01em;
+  --track-wide: .08em;
+
+  --title-size: clamp(21px, 2.2vw, 29px);
+  --title-weight: 600;
+  --title-track: -.01em;
+  --title-transform: none;
+  --nav-transform: none;
+  --btn-transform: none;
+
+  --stat-size: 25px;
+  --total-size: 16px;
+
+  /* Deliberately dense: smaller cards, tighter gutters, more on screen. */
+  --card-min: 172px;
+  --ticket-w: 344px;
+  --logo-w: 56px;
+  --pad: 10px;
+  --pad-lg: 15px;
+  --gap: 11px;
+  --gap-lg: 18px;
+
+  --ease: cubic-bezier(.4, 0, .2, 1);
+}
+
+body {
+  font-size: 14px;
+}
+
+.brand__logo {
+  border: 1px solid var(--line-strong);
+}
+
+/* Denser cards: shorter photo, tighter body, smaller type. */
+.pcard__media {
+  aspect-ratio: 1 / 1;
+}
+
+.pcard__body {
+  padding: 9px 10px;
+  gap: 5px;
+}
+
+.pcard__name {
+  font-size: 12.5px;
+  min-height: 2.5em;
+}
+
+.pcard__amount {
+  font-size: 15px;
+}
+
+.size {
+  min-width: 26px;
+  padding: 3px 5px;
+  font-size: 10.5px;
+}
+
+/* Tables are the point here — rows read like a ledger. */
+.table {
+  font-size: 12.5px;
+}
+
+.table td {
+  padding: 7px 11px;
+}
+
+.table thead th {
+  padding: 8px 11px;
+}
+
+/* Tiles sit flatter so the numbers, not the containers, carry the screen. */
+.tile {
+  gap: 4px;
+}
+
+.tile__value {
+  letter-spacing: -.02em;
+}
+
+.chart {
+  height: 150px;
+}
